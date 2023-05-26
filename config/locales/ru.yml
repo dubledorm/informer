@@ -1,0 +1,39 @@
+ru:
+  aliases:
+    _timestamps_alias: &default
+      id: Ид-р
+      created_at: Создан
+      updated_at: Изменён
+  activerecord:
+    models:
+      user:
+        one: Пользователь
+        other: Пользователи
+      location:
+        one: Точка
+        other: Точки
+    attributes:
+      user:
+        email: Email
+        password: Пароль
+        password_confirmation: Подтверждение пароля
+        encrypted_password: Текущий пароль
+        reset_password_token: Токен для сброса пароля
+        reset_password_sent_at: Дата отправки сброса пароля
+        remember_created_at: Дата сохранения сессии
+        admin: Администратор
+        <<: *default
+      location:
+        name: Английское название
+        russian_name: Русское название
+        location_type: Тип
+        lat: Широта
+        lon: Долгота
+        <<: *default
+    values:
+      location:
+        location_type:
+          city: Город
+          location: Точка
+          undefined: Не определено
+

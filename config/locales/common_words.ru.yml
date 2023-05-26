@@ -1,0 +1,13 @@
+ru:
+  active_admin:
+    site_title: Информер погоды
+  administration:
+    users:
+      services:
+        to_admin: Назначить админом
+        to_user: Снять админа
+      errors:
+        last_admin: Нельзя удалить последнего админа
+    locations:
+      services:
+        add_city: Добавить город
