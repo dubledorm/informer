@@ -14,12 +14,6 @@ module Informer
     config.i18n.default_locale = :ru
     I18n.config.enforce_available_locales = false
 
-    # Configuration for the application, engines, and railties goes here.
-    #
-    # These settings can be overridden in specific environments using the files
-    # in config/environments, which are processed later.
-    #
-    # config.time_zone = "Central Time (US & Canada)"
-    # config.eager_load_paths << Rails.root.join("extras")
+    config.logger = Logger.new($stdout)
   end
 end

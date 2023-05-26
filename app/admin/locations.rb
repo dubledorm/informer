@@ -34,13 +34,17 @@ ActiveAdmin.register Location do
   end
 
   collection_action :new_as_city do
+    redirect_to admin_locations_path, alert: I18n.t('active_admin.not_authorized') unless can? :new_as_city, Location
+
     @resource = Location.new
   end
 
   collection_action :create_as_city, method: :post do
+    redirect_to admin_locations_path, alert: I18n.t('active_admin.not_authorized') unless can? :create_as_city, Location
+
     city_name = params.require('location').require('name')
     response = Administration::Locations::Services::Cities.read(city_name)
-    raise StandardError response.message unless response.error_code == :success
+    raise StandardError, response.message unless response.error_code == :success
 
     if response.cities.empty?
       @resource = Location.new(name: city_name)
@@ -57,7 +61,7 @@ ActiveAdmin.register Location do
     def show
       super do
         response = Core::Locations::Services::Weather.read(resource.id)
-        raise StandardError response.message unless response.error_code == :success
+        raise StandardError, response.message unless response.error_code == :success
 
         @weather = response.weather
       end

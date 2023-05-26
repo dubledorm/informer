@@ -1,6 +1,7 @@
 ru:
   active_admin:
     site_title: Информер погоды
+    not_authorized: Вы не авторизованы для выполнения этого действия
   administration:
     users:
       services:
