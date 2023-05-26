@@ -11,3 +11,8 @@ ru:
     locations:
       services:
         add_city: Добавить город
+        create: Добавить город
+        select_city: Выбрать
+        confirm: Сохраняю?
+      errors:
+        not_found: Города с таким названием не найдено

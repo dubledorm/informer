@@ -1,0 +1,9 @@
+.without_sidebar
+  = form_with(model: @resource, local: true, url: create_as_city_admin_locations_path, class: 'formtastic user') do |f|
+    %fieldset.inputs
+      %ol
+        = text_input_field(f, :name, @resource)
+    %fieldset.actions
+      %ol
+        %li.action.input_action
+          = f.submit(I18n.t('administration.locations.services.add_city'))

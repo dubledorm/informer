@@ -1,0 +1,8 @@
+.table_tools
+= render layout: 'shared/paginated_table', locals: { subject_class: Administration::Locations::Entities::City,
+subject_collection: @cities_collection } do |subject|
+  = link_to I18n.t('administration.locations.services.select_city'),
+  admin_locations_path(location: { name: subject.name, russian_name: subject.russian_name,
+  location_type: :city, lat: subject.lat, lon: subject.lon }),
+  class: 'edit_link member_link c-button c-button--info u-xsmall',
+  data: {confirm: I18n.t('administration.locations.services.confirm'), method: :post}

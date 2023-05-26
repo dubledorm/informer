@@ -10,7 +10,7 @@ module Administration
         attr_accessor :name, :local_names, :lat, :lon, :country, :state
 
         def self.columns
-          %i[name local_name lat lon country state]
+          %i[name russian_name lat lon country state]
         end
 
         def attributes
@@ -20,7 +20,11 @@ module Administration
             'lon' => @lon,
             'country' => @country,
             'state' => @state,
-          }
+            'russian_name' => russian_name }
+        end
+
+        def russian_name
+          @russian_name ||= local_names&.dig('ru')
         end
       end
     end

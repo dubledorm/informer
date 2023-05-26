@@ -1,0 +1,5 @@
+.panel
+  %h3
+    = @weather.model_name.human
+  .panel_contents
+    = render partial: 'shared/attribute_table', locals: { subject: @weather }

@@ -36,4 +36,39 @@ ru:
           city: Город
           location: Точка
           undefined: Не определено
-
+    errors:
+      models:
+        location:
+          attributes:
+            lon:
+              invalid: 'Широта и долгота должны записываться в формате XX.XX'
+            lat:
+              invalid: 'Широта и долгота должны записываться в формате XX.XX'
+  activemodel:
+    models:
+      administration/locations/entities/city:
+        one: Город
+        other: Города
+      core/locations/entities/weather:
+        one: Погода
+        other: Погода
+    attributes:
+      administration/locations/entities/city:
+        name: Название
+        russian_name: Имя по русски
+        local_names: Варианты названий
+        lat: Широта
+        lon: Долгота
+        country: Страна
+        state: Область
+      core/locations/entities/weather:
+        temp: Температура
+        temp_feels_like: Ощущается как
+        temp_min: Минимальная температура
+        temp_max: Максимальная температура
+        pressure: Давление
+        lat: Широта
+        lon: Долгота
+        wind_speed: Скорость ветра
+        wind_deg: Направление ветра
+        wind_gust: Порывы до
