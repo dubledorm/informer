@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 require 'weather_reader_base'
 require 'net/http'
 require 'net/https'
