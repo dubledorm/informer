@@ -14,6 +14,6 @@ module Informer
     config.i18n.default_locale = :ru
     I18n.config.enforce_available_locales = false
 
-    config.logger = Logger.new($stdout)
+    config.logger = Logger.new($stdout) if Rails.env.production?
   end
 end
