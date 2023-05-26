@@ -5,7 +5,7 @@ require 'rails_helper'
 RSpec.describe Administration::Locations::Services::Cities do
   describe 'cities_reader' do
     context 'when weather_reader did not define' do
-      before :each do
+      before :all do
         Operation.setup do |config|
           config.weather_reader = nil
         end
@@ -19,7 +19,7 @@ RSpec.describe Administration::Locations::Services::Cities do
 
     context 'when weather reader defined' do
 
-      before :each do
+      before :all do
         weather_reader_test = WeatherReaderTest.new
 
         Operation.setup do |config|
@@ -33,7 +33,7 @@ RSpec.describe Administration::Locations::Services::Cities do
 end
 
 class WeatherReaderTest < WeatherReaderBase
-  def city_read(city_name)
+  def city_read(city_name, _limit)
     cities = [Administration::Locations::Entities::City.new(name: city_name)]
 
     Administration::Locations::Dto::CityReaderResponse.success(cities)
