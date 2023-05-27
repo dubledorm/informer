@@ -16,6 +16,7 @@ class OpenWeatherMapAdapter < WeatherReaderBase
   end
 
   def weather_read(lat, lon)
+    Rails.logger.info("!!!!!! FROM SERVICE #{lat}_#{lon}")
     params = { lat:, lon:, appid: @api_key, lang: 'ru', units: 'metric' }
     @weather_uri.query = URI.encode_www_form(params)
     response = Net::HTTP.get_response(@weather_uri)
