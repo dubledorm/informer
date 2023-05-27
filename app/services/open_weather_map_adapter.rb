@@ -1,5 +1,4 @@
 # frozen_string_literal: true
-
 require 'weather_reader_base'
 require 'net/http'
 require 'net/https'
@@ -9,6 +8,8 @@ class OpenWeatherMapAdapter < WeatherReaderBase
 
   def initialize(geo_coding_url, weather_url, api_key)
     super()
+    return unless geo_coding_url || weather_url
+
     @geo_coding_uri = URI.parse(geo_coding_url)
     @weather_uri = URI.parse(weather_url)
     @api_key = api_key
