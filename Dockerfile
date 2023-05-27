@@ -49,9 +49,9 @@ RUN bundle install --without development test
 
 #COPY package.json yarn.lock ./
 
-RUN yarn install --check-files
+#RUN yarn install --check-files
 
-RUN RAILS_ENV=production bundle exec ./bin/rake assets:precompile
+#RUN RAILS_ENV=production bundle exec ./bin/rake assets:precompile
 
 # Установка часового пояса
 ENV TZ=Europe/Moscow
