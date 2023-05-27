@@ -84,4 +84,4 @@ gem 'cancancan'
 gem 'devise'
 gem 'draper'
 gem 'haml'
-
+gem 'translit'

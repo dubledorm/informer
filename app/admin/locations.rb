@@ -8,11 +8,12 @@ ActiveAdmin.register Location do
       f.input :lat
       f.input :lon
       f.input :location_type, input_html: { value: :location }, as: :hidden
+      f.input :name, input_html: { value: :name }, as: :hidden
     end
     f.actions
   end
 
-  show do
+  show title: :russian_name do
     attributes_table do
       row :name
       row :russian_name

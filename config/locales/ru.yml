@@ -44,6 +44,8 @@ ru:
               invalid: 'Широта и долгота должны записываться в формате XX.XX'
             lat:
               invalid: 'Широта и долгота должны записываться в формате XX.XX'
+            russian_name:
+              taken: уже используется
   activemodel:
     models:
       administration/locations/entities/city:

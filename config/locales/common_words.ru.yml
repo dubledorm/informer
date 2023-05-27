@@ -2,6 +2,8 @@ ru:
   active_admin:
     site_title: Информер погоды
     not_authorized: Вы не авторизованы для выполнения этого действия
+    new_as_city: Добавить город
+    create_as_city: Ой, а их несколько! Какой возьмём?
   administration:
     users:
       services:

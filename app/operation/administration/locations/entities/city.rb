@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require 'translit'
+
 module Administration
   module Locations
     module Entities
@@ -24,7 +26,15 @@ module Administration
         end
 
         def russian_name
-          @russian_name ||= local_names&.dig('ru')
+          @russian_name ||= normalize_name(local_names&.dig('ru'))
+        end
+
+        private
+
+        def normalize_name(city_name)
+          return Translit.convert(@name || '', :english) if city_name.blank?
+
+          city_name
         end
       end
     end

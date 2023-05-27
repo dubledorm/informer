@@ -19,7 +19,7 @@ class OpenWeatherMapAdapter < WeatherReaderBase
     params = { lat:, lon:, appid: @api_key, lang: 'ru', units: 'metric' }
     @weather_uri.query = URI.encode_www_form(params)
     response = Net::HTTP.get_response(@weather_uri)
-    return error_response(response) unless response.is_a?(Net::HTTPSuccess)
+    return error_core_response(response) unless response.is_a?(Net::HTTPSuccess)
 
     weather = weather_from_body(response.body)
     Core::Locations::Dto::WeatherReaderResponse.success(weather)
@@ -29,7 +29,7 @@ class OpenWeatherMapAdapter < WeatherReaderBase
     params = { q: city_name, limit:, appid: @api_key }
     @geo_coding_uri.query = URI.encode_www_form(params)
     response = Net::HTTP.get_response(@geo_coding_uri)
-    return error_response(response) unless response.is_a?(Net::HTTPSuccess)
+    return error_admin_response(response) unless response.is_a?(Net::HTTPSuccess)
 
     cities = cities_from_body(response.body)
     Administration::Locations::Dto::CityReaderResponse.success(cities)
@@ -70,8 +70,13 @@ class OpenWeatherMapAdapter < WeatherReaderBase
     Hash[*(map.map { |key, value| [key, data.dig(*value.split('/'))] }).flatten]
   end
 
-  def error_response(http_res)
+  def error_core_response(http_res)
     Core::Locations::Dto::WeatherReaderResponse.error("Error. Kod: #{http_res.code}, #{http_res.message}," \
+" url: #{http_res.uri}")
+  end
+
+  def error_admin_response(http_res)
+    Administration::Locations::Dto::CityReaderResponse.error("Error. Kod: #{http_res.code}, #{http_res.message}," \
 " url: #{http_res.uri}")
   end
 end

@@ -25,4 +25,8 @@ class BaseReaderResponse
   end
 
   def self.validate!(_result_value); end
+
+  def success?
+    error_code == :success
+  end
 end
