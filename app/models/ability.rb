@@ -6,10 +6,10 @@ class Ability
 
   def initialize(user)
     can :read, (ActiveAdmin.register_page 'Dashboard')
+    return unless user.present?
+
     can :read, LocationDecorator
     can :read, Location
-
-    return unless user.present?
 
     return unless user.admin?
 
