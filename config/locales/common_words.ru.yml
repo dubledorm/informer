@@ -7,6 +7,11 @@ ru:
     main_page: Начальная страница
     welcome_message: Добро пожаловать в Информер погоды.
     description: Система предоставляет информацию о погоде по городам. Для подучения этой информации используется ресурс
+  core:
+    locations:
+      services:
+        weather:
+          some_error: В процессе получения двнных о погоде возникла ошибка %{message}
   administration:
     users:
       services:

@@ -14,5 +14,13 @@ RSpec.describe Location, type: :model do
 
     it { expect(FactoryBot.build(:location, lat: 'something')).to_not be_valid }
     it { expect(FactoryBot.build(:location, lon: 'something')).to_not be_valid }
+    it { expect(FactoryBot.build(:location, lat: '10.23')).to be_valid }
+    it { expect(FactoryBot.build(:location, lon: '10.23')).to be_valid }
+    it { expect(FactoryBot.build(:location, lat: '-10.23')).to be_valid }
+    it { expect(FactoryBot.build(:location, lon: '-10.23')).to be_valid }
+    it { expect(FactoryBot.build(:location, lat: '+10.23')).to_not be_valid }
+    it { expect(FactoryBot.build(:location, lon: '+10.23')).to_not be_valid }
+    it { expect(FactoryBot.build(:location, lat: '10.23-')).to_not be_valid }
+    it { expect(FactoryBot.build(:location, lon: '10.23-')).to_not be_valid }
   end
 end

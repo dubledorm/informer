@@ -9,12 +9,12 @@ module Core
           raise 'weather_reader should be defined' unless Operation.weather_reader
 
           location = Location.find(location_id)
-          Rails.cache.fetch("weather_response_#{location.lat}_#{location.lon}", expires_in: 3.hours) do
-            response = Operation.weather_reader.weather_read(location.lat, location.lon)
-            raise StandardError, response.message unless response.success?
-
-            response
+          response = Rails.cache.fetch("weather_response_#{location.lat}_#{location.lon}", expires_in: 3.hours) do
+            Operation.weather_reader.weather_read(location.lat, location.lon)
           end
+          Rails.cache.delete("weather_response_#{location.lat}_#{location.lon}") unless response.success?
+
+          response
         rescue StandardError => e
           Core::Locations::Dto::WeatherReaderResponse.error(e.message)
         end

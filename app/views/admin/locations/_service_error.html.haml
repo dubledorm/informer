@@ -1,0 +1,6 @@
+- if @error_message
+  .panel
+    %h3
+      = Core::Locations::Entities::Weather.model_name.human
+    .panel_contents
+      = I18n.t('core.locations.services.weather.some_error', message: @error_message)

@@ -1,5 +1,6 @@
-.panel
-  %h3
-    = @weather.model_name.human
-  .panel_contents
-    = render partial: 'shared/attribute_table', locals: { subject: @weather }
+- if @weather
+  .panel
+    %h3
+      = Core::Locations::Entities::Weather.model_name.human
+    .panel_contents
+      = render partial: 'shared/attribute_table', locals: { subject: @weather }

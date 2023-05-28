@@ -25,6 +25,7 @@ ActiveAdmin.register Location do
     end
 
     render 'weather'
+    render 'service_error'
     active_admin_comments
   end
 
@@ -62,9 +63,9 @@ ActiveAdmin.register Location do
     def show
       super do
         response = Core::Locations::Services::Weather.read(resource.id)
-        raise StandardError, response.message unless response.error_code == :success
 
         @weather = response.weather
+        @error_message = response.message unless response.success?
       end
     end
   end
