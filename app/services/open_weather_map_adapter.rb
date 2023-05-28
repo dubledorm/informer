@@ -52,6 +52,7 @@ class OpenWeatherMapAdapter < WeatherReaderBase
   def weather_from_body(body)
     data = JSON.parse(body)
     weather = data_mapping(WEATHER_MAPPING, data)
+    weather[:description] = data['weather']&.first&.dig('description')
     Core::Locations::Entities::Weather.new(weather)
   end
 

@@ -8,10 +8,10 @@ module Core
         include ActiveModel::Model
 
         attr_accessor :temp, :temp_feels_like, :temp_min, :temp_max, :pressure, :lat, :lon,
-                      :wind_speed, :wind_deg, :wind_gust
+                      :wind_speed, :wind_deg, :wind_gust, :description
 
         def self.columns
-          %i[temp temp_feels_like temp_min temp_max pressure lat lon wind_speed wind_deg wind_gust]
+          %i[description temp temp_feels_like temp_min temp_max pressure lat lon wind_speed wind_deg wind_gust]
         end
 
         def attributes
@@ -24,7 +24,8 @@ module Core
             'lon' => @lon,
             'wind_speed' => @wind_speed,
             'wind_deg' => @wind_deg,
-            'wind_gust' => @wind_gust }
+            'wind_gust' => @wind_gust,
+            'description' => @description }
         end
       end
     end
