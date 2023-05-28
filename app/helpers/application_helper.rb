@@ -33,4 +33,11 @@ module ApplicationHelper
       subject.errors[field_name].join(', ')
     end
   end
+
+  def map_url(lat, lon)
+    service_url = URI.parse('https://static-maps.yandex.ru/1.x/')
+    params = { ll: "#{lon},#{lat}", l: 'map', z: 5, pt: "#{lon},#{lat},flag", size: '450,450' }
+    service_url.query = URI.encode_www_form(params)
+    service_url.to_s
+  end
 end

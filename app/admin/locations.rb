@@ -25,6 +25,7 @@ ActiveAdmin.register Location do
     end
 
     render 'weather'
+    render 'map'
     render 'service_error'
     active_admin_comments
   end

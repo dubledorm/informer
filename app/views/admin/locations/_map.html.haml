@@ -1,0 +1,6 @@
+- if @weather
+  .panel
+    %h3
+      = I18n.t('active_admin.map')
+    .panel_contents
+      = image_tag(map_url(@weather.lat, @weather.lon))
