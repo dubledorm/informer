@@ -45,7 +45,7 @@ ru:
       "no": "Нет"
     main_content: "Создайте %{model}#main_content для отображения содержимого."
     logout: "Выйти"
-    powered_by: "Работает на %{active_admin} %{version}"
+    powered_by: ""
     sidebars:
       filters: "Фильтры"
       search_status: "Статус поиска"
